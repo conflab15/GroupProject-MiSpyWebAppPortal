@@ -1,0 +1,54 @@
+﻿@page
+@model MiSpyWebAppPortal.Pages.Monitor.ReportModel
+@{
+    ViewData["Title"] = "Logged Events Report";
+}
+
+<!-- HTMl Page to display the records of the logged in User -->
+
+<div class="container row p-0 mt-5">
+    <div class="col-10">
+        <h2 class="text-info text-dark font-weight-bold">Logged Event Report for @User.Identity.Name</h2>
+    </div>
+    <div class="col border p-4 mt-4">
+        <form method="post">
+            @if (Model.Events.Count > 0)
+            {
+                <table class="table table-striped ">
+                    <tr class="table-secondary">
+                        <th id="tableHead" >
+                            <label asp-for="Events.FirstOrDefault().Event"></label>
+                        </th>
+                        <th id="tableHead" >
+                            <label asp-for="Events.FirstOrDefault().Time"></label>
+                        </th>
+                    </tr>
+                    @foreach (var events in Model.Events)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(m => events.Event)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => events.Time)
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+            else
+            {
+                <h2>No logged events</h2>
+                <br />
+                <h2>Have you downloaded the logger app?</h2>
+                <p>To start seeing a report of typed events, please download the Logger Application to record events to display</p>
+                <br />
+                <a class="btn btn-light" asp-page="/Download">Download</a>
+            }
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}

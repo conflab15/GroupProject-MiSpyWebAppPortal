@@ -12,5 +12,6 @@ namespace MiSpyWebAppPortal.Data
             : base(options)
         {
         }
+        public DbSet<MiSpyWebAppPortal.Models.LoggedEvent> LoggedEvent { get; set; }
     }
 }

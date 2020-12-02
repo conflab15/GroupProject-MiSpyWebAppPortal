@@ -18,16 +18,43 @@ a {
   border-color: #1861ac;
 }
 
+
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
 
+/*------ Custom CSS Here ------*/
+
+.btn-light {
+    background-color: #A9F8FB;
+    font-size: 20px;
+}
+
+.nav-item {
+    padding: 0px 3px 0px 3px;
+    font-size: 17px;
+}
+
+#indexSideLeft {
+    padding-top: 40px;
+    text-align: left;
+}
+
+#tableHead {
+    background-color: #A9F8FB;
+}
+
+.table-striped > tr:nth-child(odd) {
+
+    background-color: #A9F8FB!important;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+  font-size: 25px;
 }
 @media (min-width: 768px) {
   html {
@@ -63,9 +90,15 @@ body {
   margin-bottom: 60px;
 }
 .footer {
+  background-color: #A9F8FB;
+  color: white;
   position: absolute;
   bottom: 0;
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+}
+
+.footer a p {
+    color: white!important;
 }

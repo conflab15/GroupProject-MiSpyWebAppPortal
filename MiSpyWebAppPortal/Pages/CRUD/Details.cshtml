@@ -1,0 +1,38 @@
+﻿@page
+@model MiSpyWebAppPortal.Pages.CRUD.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>LoggedEvent</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LoggedEvent.Event)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LoggedEvent.Event)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LoggedEvent.Time)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LoggedEvent.Time)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LoggedEvent.UserId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LoggedEvent.UserId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.LoggedEvent.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

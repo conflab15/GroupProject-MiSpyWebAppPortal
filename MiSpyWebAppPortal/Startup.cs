@@ -30,9 +30,16 @@ namespace MiSpyWebAppPortal
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
+
+            services.AddDbContext<MiSpyWebAppPortalContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("MiSpyWebAppPortalContext")));
+
+            services.AddRazorPages(options =>
+             options.Conventions.AuthorizeFolder("/Monitor")); //Ensures any pages within this section require an account to be logged in
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

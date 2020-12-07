@@ -12,6 +12,7 @@ using MiSpyWebAppPortal.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MiSpyWebAppPortal.Models;
 
 namespace MiSpyWebAppPortal
 {
@@ -40,6 +41,24 @@ namespace MiSpyWebAppPortal
 
             services.AddRazorPages(options =>
              options.Conventions.AuthorizeFolder("/Monitor")); //Ensures any pages within this section require an account to be logged in
+
+            //Services for External Application Authentication
+            services.AddAuthentication().AddMicrosoftAccount(microsoftOptions =>
+            {
+                microsoftOptions.ClientId = "032ac58a-5be4-4935-a7a2-be306f32f5be";
+                microsoftOptions.ClientSecret = "4UAiVN~I~gJt3_wzyP1amFp316ay~qZ93U";
+            })
+               .AddGoogle(googleOptions =>
+               {
+                   googleOptions.ClientId = "369181053611-4if4jmuqfh2ndec90ocopopn795kbqf2.apps.googleusercontent.com";
+                   googleOptions.ClientSecret = "7s0nc_BxDfmx3j3TJynHZB__";
+               })
+               .AddFacebook(facebookOptions =>
+               {
+                   facebookOptions.AppId = "193694045766010";
+                   facebookOptions.AppSecret = "bf7585105d35af4c56e1aebdeaa2b6e4";
+
+               });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

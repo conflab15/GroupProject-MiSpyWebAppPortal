@@ -17,9 +17,9 @@ a {
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  color: black!important;
+  background-color: #A9F8FB!important;
+  border-color: #A9F8FB!important;
 }
 
 
@@ -38,7 +38,7 @@ a {
 
 .nav-item {
     padding: 0px 3px 0px 3px;
-    font-size: 17px;
+    font-size: 20px;
 }
 
 #indexSideLeft {

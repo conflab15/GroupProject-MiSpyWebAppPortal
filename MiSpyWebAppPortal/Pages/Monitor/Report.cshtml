@@ -28,32 +28,17 @@
                 </tr>
                 @foreach (var events in Model.Events)
                 {
-
-                        <tr>
-                            
-                            <td>
-                                @Html.DisplayFor(m => events.Event)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(m => events.Time)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(m => events.HasRead)
-                            </td>
-                        </tr>
-      
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(m => events.Event)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(m => events.Time)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(m => events.HasRead)
-                            </td>
-                        </tr>
-                    
+                    <tr> 
+                        <td>
+                            @Html.DisplayFor(m => events.Event)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => events.Time)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => events.HasRead)
+                        </td>
+                    </tr>
                 }
             </table>
             }

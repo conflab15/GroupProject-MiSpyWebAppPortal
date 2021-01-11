@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MiSpyWebAppPortal.Models;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace MiSpyWebAppPortal
 {
@@ -59,6 +60,11 @@ namespace MiSpyWebAppPortal
                    facebookOptions.AppSecret = "bf7585105d35af4c56e1aebdeaa2b6e4";
 
                });
+
+            // Add application services.
+            //services.AddTransient<IEmailSender, AuthMessageSender>();
+            //services.AddTransient<ISmsSender, AuthMessageSender>();
+            //services.Configure<SMSOptions>(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

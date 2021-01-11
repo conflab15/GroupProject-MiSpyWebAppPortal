@@ -14,17 +14,34 @@
         <form method="post">
             @if (Model.Events.Count > 0)
             {
-                <table class="table table-striped ">
-                    <tr class="table-secondary">
-                        <th id="tableHead" >
-                            <label asp-for="Events.FirstOrDefault().Event"></label>
-                        </th>
-                        <th id="tableHead" >
-                            <label asp-for="Events.FirstOrDefault().Time"></label>
-                        </th>
-                    </tr>
-                    @foreach (var events in Model.Events)
-                    {
+            <table class="table table-striped ">
+                <tr class="table-secondary">
+                    <th id="tableHead">
+                        <label asp-for="Events.FirstOrDefault().Event"></label>
+                    </th>
+                    <th id="tableHead">
+                        <label asp-for="Events.FirstOrDefault().Time"></label>
+                    </th>
+                    <th id="tableHead">
+                        <label asp-for="Events.FirstOrDefault().HasRead">Mark as Read</label>
+                    </th>
+                </tr>
+                @foreach (var events in Model.Events)
+                {
+
+                        <tr>
+                            
+                            <td>
+                                @Html.DisplayFor(m => events.Event)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => events.Time)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => events.HasRead)
+                            </td>
+                        </tr>
+      
                         <tr>
                             <td>
                                 @Html.DisplayFor(m => events.Event)
@@ -32,16 +49,20 @@
                             <td>
                                 @Html.DisplayFor(m => events.Time)
                             </td>
+                            <td>
+                                @Html.DisplayFor(m => events.HasRead)
+                            </td>
                         </tr>
-                    }
-                </table>
+                    
+                }
+            </table>
             }
             else
             {
                 <h2>No logged events</h2>
                 <br />
-                <h2>Have you downloaded the logger app?</h2>
-                <p>To start seeing a report of typed events, please download the Logger Application to record events to display</p>
+                <h2>Have you downloaded the Mi-Spy Logging Application?</h2>
+                <p>To start seeing a report of typed events, please download the Logging Application to record events to display</p>
                 <br />
                 <a class="btn btn-light" asp-page="/Download">Download</a>
             }

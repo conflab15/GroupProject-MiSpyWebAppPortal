@@ -16,5 +16,8 @@ namespace MiSpyWebAppPortal.Models
         public DateTime Time { get; set; }
         [Required]
         public string UserId { get; set; }
+
+        [Required]
+        public bool HasRead { get; set; }
     }
 }

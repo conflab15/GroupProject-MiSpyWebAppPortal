@@ -23,7 +23,7 @@ namespace MiSpyWebAppPortal.Pages.Monitor
 
         //Startup enforce Authorise for the Monitor Folder
 
-        public void OnGet()
+        public void OnGetAsync(string sortOrder, string currentFilter)
         {
             Events = _db.LoggedEvent.Where(Events => Events.UserId == User.Identity.Name).ToList(); //Getting the Items from the List where the Identity user matches. 
         }

@@ -8,39 +8,49 @@
 
 <div class="container row p-0 mt-5">
     <div class="col-10">
-        <h2 class="text-info text-dark font-weight-bold">Logged Event Report for @User.Identity.Name</h2>
+        <h2 class="text-info text-dark font-weight-bold">Logged Event Report for: @User.Identity.Name</h2>
     </div>
+    <hr />
+    <div class="col-10">
+        <h4>Logged Events are listed below, click on an event title to view the details of the event!</h4>
+    </div>
+
+    <div class="col-10">
+        <h4>This reporting page is outdated, and a new version is now available, click <a asp-page="/Monitor/NewReport">here</a> for the new page!</h4>
+    </div>
+
+    <hr />
     <div class="col border p-4 mt-4">
         <form method="post">
             @if (Model.Events.Count > 0)
             {
-            <table class="table table-striped ">
-                <tr class="table-secondary">
-                    <th id="tableHead">
-                        <label asp-for="Events.FirstOrDefault().Event"></label>
-                    </th>
-                    <th id="tableHead">
-                        <label asp-for="Events.FirstOrDefault().Time"></label>
-                    </th>
-                    <th id="tableHead">
-                        <label asp-for="Events.FirstOrDefault().HasRead">Mark as Read</label>
-                    </th>
-                </tr>
-                @foreach (var events in Model.Events)
-                {
-                    <tr> 
-                        <td>
-                            @Html.DisplayFor(m => events.Event)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(m => events.Time)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(m => events.HasRead)
-                        </td>
+                <table class="table table-striped ">
+                    <tr class="table-secondary">
+                        <th id="tableHead">
+                            <label asp-for="Events.FirstOrDefault().Event"></label>
+                        </th>
+                        <th id="tableHead">
+                            <label asp-for="Events.FirstOrDefault().Time"></label>
+                        </th>
+                        <th id="tableHead">
+                            <label asp-for="Events.FirstOrDefault().HasRead">Mark as Read</label>
+                        </th>
                     </tr>
-                }
-            </table>
+                    @foreach (var events in Model.Events)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-page="./Event" asp-route-id="@events.Id">@Html.DisplayFor(m => events.Event)</a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => events.Time)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => events.HasRead)
+                            </td>
+                        </tr>
+                    }
+                </table>
             }
             else
             {

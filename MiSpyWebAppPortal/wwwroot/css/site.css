@@ -55,10 +55,14 @@ a {
     background-color: #A9F8FB!important;
 }
 
+#downloadCentreImg {
+    padding: 15px 10px 10px 20px;
+    margin: 10px;
+}
+
 
 /* Help Page Accordion Styles */
 /*--------------------------------------------------*/
-
 .card-header {
     background-color: #A9F8FB !important;
 }

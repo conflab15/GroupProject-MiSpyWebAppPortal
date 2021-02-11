@@ -1,0 +1,77 @@
+﻿@page
+@model MiSpyWebAppPortal.Pages.Monitor.NewReportModel
+@{
+    ViewData["Title"] = "Logged Events Report";
+}
+
+
+<div class="container row p-0 mt-5">
+    <div class="col-10">
+        <h2 class="text-info text-dark font-weight-bold">Logged Event Report for: @User.Identity.Name</h2>
+    </div>
+    <hr />
+    <div class="col-10">
+        <h4>Logged Events are listed below, click on an event title to view the details of the event!</h4>
+    </div>
+    <hr />
+</div>
+<br />
+
+@if (Model.LoggedEvents.Count > 0)
+{
+    <table class="table table-striped ">
+        <thead>
+            <tr class="table-secondary">
+                <th id="tableHead">
+                    <label asp-for="LoggedEvents.FirstOrDefault().Event"></label>
+                </th>
+                <th id="tableHead">
+                    <label asp-for="LoggedEvents.FirstOrDefault().Time"></label>
+                </th>
+                <th id="tableHead">
+                    <label asp-for="LoggedEvents.FirstOrDefault().HasRead">Mark as Read</label>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var events in Model.LoggedEvents)
+            {
+                <tr>
+                    <td>
+                        <a asp-page="./Event" asp-route-id="@events.Id">@Html.DisplayFor(m => events.Event)</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => events.Time)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => events.HasRead)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h2>No logged events</h2>
+    <br />
+    <h2>Have you downloaded the Mi-Spy Logging Application?</h2>
+    <p>To start seeing a report of typed events, please download the Logging Application to record events to display</p>
+    <br />
+    <a class="btn btn-light" asp-page="/Download">Download</a>
+}
+@{
+    var prevDisabled = !Model.LoggedEvents.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.LoggedEvents.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./NewReport"
+   asp-route-pageIndex="@(Model.LoggedEvents.PageIndex - 1)"
+   class="btn btn-primary @prevDisabled">
+    Previous
+</a>
+<a asp-page="./NewReport"
+   asp-route-pageIndex="@(Model.LoggedEvents.PageIndex + 1)"
+   class="btn btn-primary @nextDisabled">
+    Next
+</a>
